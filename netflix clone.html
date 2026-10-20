@@ -1,0 +1,1053 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STREAMIX | Premium Entertainment</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --red: #e50914;
+    --bg: #09090d;
+    --muted: #a6a6b0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* NAVBAR */
+
+.navbar {
+    height: 78px;
+    padding: 0 6%;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    position: fixed;
+    inset: 0 0 auto;
+    z-index: 100;
+    background: linear-gradient(
+        to bottom,
+        rgba(5,5,8,.98),
+        rgba(5,5,8,.72)
+    );
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.logo {
+    font-size: 29px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    white-space: nowrap;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.nav-links {
+    display: flex;
+    gap: 26px;
+    color: #c6c6ce;
+    font-size: 13px;
+}
+
+.nav-links a {
+    transition: color .25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: white;
+}
+
+.nav-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.13);
+    border-radius: 30px;
+    padding: 9px 13px;
+    width: 210px;
+}
+
+.search-box input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 12px;
+}
+
+.search-box input::placeholder {
+    color: #aaaab5;
+}
+
+.profile {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff4d6d, #6c36d8);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 690px;
+    height: 92vh;
+    max-height: 850px;
+    display: flex;
+    align-items: center;
+    padding: 110px 6% 90px;
+    position: relative;
+    background:
+        linear-gradient(90deg,
+            #09090d 0%,
+            rgba(9,9,13,.92) 23%,
+            rgba(9,9,13,.52) 51%,
+            rgba(9,9,13,.05) 100%),
+        linear-gradient(0deg,
+            #09090d 0%,
+            transparent 45%),
+        url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=2000&q=90");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-content {
+    max-width: 590px;
+    position: relative;
+    z-index: 1;
+    animation: appear 1s ease both;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #ff4a56;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 25px;
+    height: 2px;
+    background: var(--red);
+}
+
+.hero h1 {
+    font-size: clamp(43px, 6vw, 76px);
+    line-height: .99;
+    letter-spacing: -4px;
+    font-weight: 800;
+    margin-bottom: 22px;
+}
+
+.hero h1 span {
+    color: #ff2935;
+}
+
+.hero-meta {
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #d5d5dd;
+    margin-bottom: 20px;
+}
+
+.rating {
+    color: #ffd166;
+    font-weight: 700;
+}
+
+.quality {
+    border: 1px solid #777;
+    padding: 3px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+}
+
+.hero-description {
+    max-width: 490px;
+    color: #c2c2cc;
+    font-size: 14px;
+    line-height: 1.9;
+    margin-bottom: 27px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 14px 23px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 12px;
+    transition: .25s;
+}
+
+.btn-primary {
+    background: var(--red);
+    color: white;
+    box-shadow: 0 6px 25px rgba(229,9,20,.23);
+}
+
+.btn-primary:hover {
+    background: #ff2732;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,.1);
+    color: white;
+    border-color: rgba(255,255,255,.16);
+    backdrop-filter: blur(10px);
+}
+
+.btn-secondary:hover {
+    background: rgba(255,255,255,.2);
+}
+
+.hero-note {
+    color: #aaaab5;
+    font-size: 11px;
+    margin-top: 22px;
+}
+
+/* MAIN CONTENT */
+
+main {
+    position: relative;
+    z-index: 2;
+    margin-top: -25px;
+}
+
+.content-section {
+    padding: 24px 6%;
+    scroll-margin-top: 90px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 19px;
+}
+
+.section-title {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -.6px;
+}
+
+.section-title span {
+    color: var(--red);
+}
+
+.see-all {
+    font-size: 11px;
+    color: #aaaab5;
+}
+
+.see-all:hover {
+    color: white;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.filter {
+    border: 1px solid #292932;
+    background: #131319;
+    color: #aaaab5;
+    border-radius: 30px;
+    padding: 8px 14px;
+    font-size: 11px;
+    transition: .2s;
+}
+
+.filter:hover,
+.filter.active {
+    color: white;
+    border-color: var(--red);
+    background: rgba(229,9,20,.13);
+}
+
+/* MOVIE CARDS */
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 19px;
+}
+
+.movie-card {
+    min-width: 0;
+    position: relative;
+    cursor: pointer;
+    transition: transform .3s;
+}
+
+.poster {
+    height: 245px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 9px;
+    background: #202027;
+    border: 1px solid rgba(255,255,255,.08);
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .45s, filter .3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+}
+
+.movie-card:hover .poster img {
+    transform: scale(1.07);
+    filter: brightness(.65);
+}
+
+.poster-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: .3s;
+}
+
+.movie-card:hover .poster-overlay {
+    opacity: 1;
+}
+
+.play-circle {
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(255,255,255,.8);
+    border-radius: 50%;
+    background: rgba(229,9,20,.9);
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+}
+
+.card-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 7px;
+    background: var(--red);
+    color: white;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.card-rating {
+    position: absolute;
+    right: 9px;
+    bottom: 9px;
+    background: rgba(0,0,0,.72);
+    padding: 5px 7px;
+    border-radius: 4px;
+    font-size: 10px;
+    color: #ffd166;
+}
+
+.movie-info {
+    padding: 12px 2px;
+}
+
+.movie-title {
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 7px;
+}
+
+.movie-subtitle {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    color: #9999a5;
+    font-size: 10px;
+}
+
+/* FEATURE STRIP */
+
+.feature-strip {
+    margin: 40px 6%;
+    padding: 35px;
+    border: 1px solid #292932;
+    border-radius: 13px;
+    background:
+        radial-gradient(ellipse at right,
+            rgba(229,9,20,.22),
+            transparent 60%),
+        #121218;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.feature-strip h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.feature-strip p {
+    font-size: 12px;
+    color: #aaaab5;
+    line-height: 1.8;
+    max-width: 480px;
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 55px;
+    padding: 35px 6%;
+    border-top: 1px solid #22222b;
+    color: #777783;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    color: white;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 9px;
+}
+
+.footer-logo span {
+    color: var(--red);
+}
+
+footer p {
+    line-height: 1.8;
+}
+
+.footer-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.empty-message {
+    grid-column: 1 / -1;
+    padding: 35px 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+    .navbar {
+        gap: 22px;
+    }
+
+    .nav-links {
+        gap: 14px;
+    }
+
+    .search-box {
+        width: 165px;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .poster {
+        height: 250px;
+    }
+}
+
+@media (max-width: 650px) {
+    .navbar {
+        height: 66px;
+        padding: 0 5%;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .nav-right {
+        gap: 10px;
+    }
+
+    .search-box {
+        width: 135px;
+        padding: 8px 10px;
+    }
+
+    .profile {
+        width: 31px;
+        height: 31px;
+    }
+
+    .hero {
+        height: 78vh;
+        min-height: 560px;
+        padding: 100px 5% 70px;
+        background-position: 60% center;
+        background-image:
+            linear-gradient(90deg,
+                rgba(9,9,13,.94),
+                rgba(9,9,13,.46)),
+            linear-gradient(0deg, #09090d, transparent 65%),
+            url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1200&q=85");
+    }
+
+    .hero h1 {
+        font-size: 47px;
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 12px;
+    }
+
+    .content-section {
+        padding: 22px 5%;
+    }
+
+    .section-title {
+        font-size: 18px;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 13px;
+    }
+
+    .poster {
+        height: 225px;
+    }
+
+    .feature-strip {
+        margin: 25px 5%;
+        padding: 23px;
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .feature-strip h2 {
+        font-size: 21px;
+    }
+
+    footer {
+        padding: 30px 5%;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 380px) {
+    .search-box {
+        width: 110px;
+    }
+
+    .hero h1 {
+        font-size: 39px;
+    }
+
+    .poster {
+        height: 190px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="#" class="logo">STREAM<span>IX</span></a>
+
+    <nav class="nav-links">
+        <a href="#home" class="active">Home</a>
+        <a href="#trending">Trending</a>
+        <a href="#movies">Movies</a>
+        <a href="#series">Series</a>
+    </nav>
+
+    <div class="nav-right">
+        <label class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search"
+                   placeholder="Search titles...">
+        </label>
+        <div class="profile">S</div>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="eyebrow">STREAMIX ORIGINAL</div>
+
+        <h1>BEYOND<br>THE <span>STARS</span></h1>
+
+        <div class="hero-meta">
+            <span class="rating">★ 9.2</span>
+            <span>2026</span>
+            <span>Adventure</span>
+            <span class="quality">4K ULTRA HD</span>
+            <span>2h 18m</span>
+        </div>
+
+        <p class="hero-description">
+            Beyond the limits of the known universe, one unexpected
+            discovery changes everything. An epic cinematic journey
+            into the unknown begins now.
+        </p>
+
+        <div class="hero-actions">
+            <button class="btn btn-primary"
+                    onclick="playMovie('Beyond the Stars')">
+                ▶ &nbsp; Play Now
+            </button>
+
+            <button class="btn btn-secondary"
+                    onclick="showDetails('Beyond the Stars')">
+                ⓘ &nbsp; More Info
+            </button>
+        </div>
+
+        <p class="hero-note">
+            ✦ New stories. Endless possibilities.
+        </p>
+    </div>
+</section>
+
+<main>
+    <section class="content-section" id="trending">
+        <div class="section-header">
+            <h2 class="section-title">
+                Trending <span>Now</span>
+            </h2>
+            <a class="see-all" href="#movies">Explore all ↗</a>
+        </div>
+
+        <div class="filters">
+            <button class="filter active" data-genre="All">All</button>
+            <button class="filter" data-genre="Action">Action</button>
+            <button class="filter" data-genre="Sci-Fi">Sci-Fi</button>
+            <button class="filter" data-genre="Drama">Drama</button>
+            <button class="filter" data-genre="Adventure">Adventure</button>
+        </div>
+
+        <div class="movie-grid" id="trendingGrid"></div>
+    </section>
+
+    <section class="feature-strip">
+        <div>
+            <div class="eyebrow">YOUR NEXT OBSESSION</div>
+            <h2>Great stories live here.</h2>
+            <p>
+                Discover new worlds, unforgettable characters and
+                stories worth staying up for. Your next favourite
+                is only one click away.
+            </p>
+        </div>
+
+        <button class="btn btn-primary"
+                onclick="document.querySelector('#movies').scrollIntoView({behavior:'smooth'})">
+            Explore Collection &nbsp; →
+        </button>
+    </section>
+
+    <section class="content-section" id="movies">
+        <div class="section-header">
+            <h2 class="section-title">
+                Popular <span>Movies</span>
+            </h2>
+            <span class="see-all">Handpicked for you</span>
+        </div>
+
+        <div class="movie-grid" id="popularGrid"></div>
+    </section>
+
+    <section class="content-section" id="series">
+        <div class="section-header">
+            <h2 class="section-title">
+                Binge-Worthy <span>Series</span>
+            </h2>
+        </div>
+
+        <div class="movie-grid" id="seriesGrid"></div>
+    </section>
+</main>
+
+<footer>
+    <div>
+        <div class="footer-logo">STREAM<span>IX</span></div>
+        <p>A streaming UI concept created for web development practice.</p>
+        <p>© 2026 STREAMIX. Independent demo project.</p>
+    </div>
+
+    <div class="footer-links">
+        <a href="#home">Home</a>
+        <a href="#trending">Trending</a>
+        <a href="#movies">Movies</a>
+        <a href="#series">Series</a>
+    </div>
+</footer>
+
+<script>
+const movies = [
+    {
+        title: "Dune: Part Two",
+        genre: "Sci-Fi",
+        year: "2024",
+        rating: "8.5",
+        tag: "TRENDING",
+        image: "photo-1446776811953-b23d57bd21aa"
+    },
+    {
+        title: "The Dark Knight",
+        genre: "Action",
+        year: "2008",
+        rating: "9.0",
+        tag: "TOP RATED",
+        image: "photo-1519608487953-e999c86e7455"
+    },
+    {
+        title: "Interstellar",
+        genre: "Sci-Fi",
+        year: "2014",
+        rating: "8.7",
+        tag: "POPULAR",
+        image: "photo-1462331940025-496dfbfc7564"
+    },
+    {
+        title: "The Lost World",
+        genre: "Adventure",
+        year: "2025",
+        rating: "8.1",
+        tag: "NEW",
+        image: "photo-1464822759023-fed622ff2c3b"
+    },
+    {
+        title: "Midnight Story",
+        genre: "Drama",
+        year: "2025",
+        rating: "8.4",
+        tag: "FEATURED",
+        image: "photo-1518709268805-4e9042af9f23"
+    },
+    {
+        title: "Into The Wild",
+        genre: "Adventure",
+        year: "2023",
+        rating: "8.2",
+        tag: "POPULAR",
+        image: "photo-1470770841072-f978cf4d019e"
+    },
+    {
+        title: "Dark Horizon",
+        genre: "Action",
+        year: "2025",
+        rating: "8.6",
+        tag: "TRENDING",
+        image: "photo-1511497584788-876760111969"
+    },
+    {
+        title: "Cosmic Journey",
+        genre: "Sci-Fi",
+        year: "2024",
+        rating: "8.8",
+        tag: "TOP RATED",
+        image: "photo-1462331940025-496dfbfc7564"
+    },
+    {
+        title: "Hidden Valley",
+        genre: "Drama",
+        year: "2023",
+        rating: "7.9",
+        tag: "POPULAR",
+        image: "photo-1472396961693-142e6e269027"
+    },
+    {
+        title: "Wild Frontier",
+        genre: "Adventure",
+        year: "2025",
+        rating: "8.3",
+        tag: "FEATURED",
+        image: "photo-1500530855697-b586d89ba3ee"
+    },
+    {
+        title: "Shadow Protocol",
+        genre: "Action",
+        year: "2025",
+        rating: "8.5",
+        tag: "NEW",
+        image: "photo-1519608487953-e999c86e7455"
+    },
+    {
+        title: "Ocean Deep",
+        genre: "Drama",
+        year: "2024",
+        rating: "8.0",
+        tag: "POPULAR",
+        image: "photo-1518837695005-2083093ee35b"
+    },
+    {
+        title: "Beyond Earth",
+        genre: "Sci-Fi",
+        year: "2025",
+        rating: "8.7",
+        tag: "TRENDING",
+        image: "photo-1446776811953-b23d57bd21aa"
+    },
+    {
+        title: "Kingdom Rise",
+        genre: "Action",
+        year: "2024",
+        rating: "8.2",
+        tag: "TOP RATED",
+        image: "photo-1518709268805-4e9042af9f23"
+    },
+    {
+        title: "Mountain Echo",
+        genre: "Adventure",
+        year: "2023",
+        rating: "8.1",
+        tag: "FEATURED",
+        image: "photo-1464822759023-fed622ff2c3b"
+    }
+];
+
+const seriesTitles = [
+    "The Last Frontier",
+    "Parallel Worlds",
+    "City of Shadows",
+    "The Wild Unknown",
+    "Echoes of Time"
+];
+
+const seriesImages = [
+    "photo-1511497584788-876760111969",
+    "photo-1462331940025-496dfbfc7564",
+    "photo-1519608487953-e999c86e7455",
+    "photo-1470770841072-f978cf4d019e",
+    "photo-1518709268805-4e9042af9f23"
+];
+
+let selectedGenre = "All";
+let searchTerm = "";
+
+function imageUrl(id) {
+    return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=600&q=80`;
+}
+
+function createCard(movie) {
+    return `
+        <article class="movie-card"
+                 onclick="showDetails('${movie.title.replace(/'/g, "\\'")}')">
+            <div class="poster">
+                <img src="${imageUrl(movie.image)}"
+                     alt="${movie.title} poster"
+                     loading="lazy">
+
+                <span class="card-badge">${movie.tag}</span>
+
+                <div class="poster-overlay">
+                    <button class="play-circle"
+                            aria-label="Play ${movie.title}"
+                            onclick="event.stopPropagation(); playMovie('${movie.title.replace(/'/g, "\\'")}')">
+                        ▶
+                    </button>
+                </div>
+
+                <span class="card-rating">★ ${movie.rating}</span>
+            </div>
+
+            <div class="movie-info">
+                <h3 class="movie-title">${movie.title}</h3>
+                <div class="movie-subtitle">
+                    <span>${movie.year} · ${movie.genre}</span>
+                    <span>HD</span>
+                </div>
+            </div>
+        </article>
+    `;
+}
+
+function renderMovies() {
+    const filtered = movies.filter(movie => {
+        const matchesGenre =
+            selectedGenre === "All" ||
+            movie.genre === selectedGenre;
+
+        const matchesSearch =
+            movie.title.toLowerCase().includes(searchTerm) ||
+            movie.genre.toLowerCase().includes(searchTerm);
+
+        return matchesGenre && matchesSearch;
+    });
+
+    const trending = document.getElementById("trendingGrid");
+    const popular = document.getElementById("popularGrid");
+
+    trending.innerHTML = filtered.slice(0, 5).length
+        ? filtered.slice(0, 5).map(createCard).join("")
+        : `<p class="empty-message">No matching titles found. Try another search.</p>`;
+
+    popular.innerHTML = filtered.slice(5).length
+        ? filtered.slice(5).map(createCard).join("")
+        : `<p class="empty-message">Explore another genre to find more titles.</p>`;
+}
+
+function renderSeries() {
+    const series = seriesTitles.map((title, index) => ({
+        title,
+        genre: "Series",
+        year: "2025",
+        rating: (8.1 + index * 0.1).toFixed(1),
+        tag: "SERIES",
+        image: seriesImages[index]
+    }));
+
+    document.getElementById("seriesGrid").innerHTML =
+        series.map(createCard).join("");
+}
+
+document.querySelectorAll(".filter").forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelectorAll(".filter").forEach(item =>
+            item.classList.remove("active")
+        );
+
+        button.classList.add("active");
+        selectedGenre = button.dataset.genre;
+        renderMovies();
+    });
+});
+
+document.getElementById("searchInput").addEventListener("input", event => {
+    searchTerm = event.target.value.toLowerCase().trim();
+    renderMovies();
+});
+
+function playMovie(title) {
+    alert(
+        `"${title}" selected!\n\n` +
+        "This is a front-end demo. Add a licensed video source " +
+        "to enable actual playback."
+    );
+}
+
+function showDetails(title) {
+    alert(
+        `${title}\n\n` +
+        "Discover the story, explore the genre, and enjoy this " +
+        "streaming website concept.\n\n" +
+        "Demo feature — connect a movie database for real details."
+    );
+}
+
+renderMovies();
+renderSeries();
+</script>
+
+</body>
+</html>
